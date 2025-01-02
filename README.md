@@ -15,6 +15,7 @@ While exploring the Milky Way in search of Earth, a spaceship’s engine malfunc
 1. **Asteroid Motion Model**
 
    Each asteroid follows a known motion model:
+   
    $$x(t) = C_{pos_x} + C_{vel_x}\,t + \tfrac{1}{2} C_{acc_x}\,t^2,$$
    
    $$y(t) = C_{pos_y} + C_{vel_y}\,t + \tfrac{1}{2} C_{acc_y}\,t^2.$$
@@ -23,7 +24,7 @@ While exploring the Milky Way in search of Earth, a spaceship’s engine malfunc
    - $(C_{acc})$ = acceleration term $(a_x, a_y)$
    - Each timestep **$\Delta t = 1$** second.
 
-2. **World**
+3. **World**
    - A rectangular field of variable width and height (e.g. 2x2, 4x2, etc.).
    - **(0, 0)** is the lower-left corner.
    - The **top boundary** of the field (the maximum \(y\)-value) is **homebase** (Earth).
