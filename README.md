@@ -76,40 +76,38 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
 
 1. **State Representation**  
    A typical state vector for an asteroid might include:
-   $$
-   \mathbf{x} = \begin{bmatrix} x \\ y \\ v_x \\ v_y \\ a_x \\ a_y \end{bmatrix},
-   $$
+   
+   $$\mathbf{x} = \begin{bmatrix} x \\ y \\ v_x \\ v_y \\ a_x \\ a_y \end{bmatrix},$$
+   
    where $(x, y)$ is position, $(v_x, v_y)$ is velocity, and $(a_x, a_y)$ is acceleration.
 
-2. **Prediction (Time Update)**
+3. **Prediction (Time Update)**
    - **Predict the next state** using the known motion model (e.g., constant acceleration over a 1-second timestep).
    - In discrete form:
-     $$
-     \mathbf{x}_{k+1} = \mathbf{F}\,\mathbf{x}_k + \mathbf{u}_k,
-     $$
+     
+     $$\mathbf{x}_{k+1} = \mathbf{F}\,\mathbf{x}_k + \mathbf{u}_k,$$
+
      where $(\mathbf{F})$ is the state transition matrix derived from:
-     $$
-       x_{k+1} = x_k + v_x \Delta t + \tfrac{1}{2} a_x \Delta t^2, \quad
-       v_{x,k+1} = v_{x,k} + a_{x,k} \Delta t, \quad
-       \text{...}
-     $$
+     
+     $$x_{k+1} = x_k + v_x \Delta t + \tfrac{1}{2} a_x \Delta t^2, \quad v_{x,k+1} = v_{x,k} + a_{x,k} \Delta t, \quad \text{...}$$
+
      $(\mathbf{u}_k)$ could be external inputs or remain zero if none are present.
    - **Predict the next covariance** to account for process noise.
 
-3. **Measurement Update**
+4. **Measurement Update**
    - Measurements might only be \((x, y)\) positions (i.e., partial observations of the state).
    - **Compute the innovation** (difference) between the measured position and the predicted position from the state vector.
    - **Update** the state vector and covariance using the Kalman Gain \(K\):
-     $$
-     \mathbf{x}_{k+1} \leftarrow \mathbf{x}_{k+1} + K \left( \mathbf{z}_{k+1} - \mathbf{H}\,\mathbf{x}_{k+1} \right),
-     $$
+     
+     $$\mathbf{x}_{k+1} \leftarrow \mathbf{x}_{k+1} + K \left( \mathbf{z}_{k+1} - \mathbf{H}\,\mathbf{x}_{k+1} \right),$$
+
      where $(\mathbf{z}_{k+1})$ is the actual measurement (observed $(x, y)$, and $(\mathbf{H})$ is the observation matrix mapping the state to the measured quantities.
 
-4. **Noise Handling**
+5. **Noise Handling**
    - **Process Noise**: Represents modeling errors or unmodeled forces in the asteroid’s motion.
    - **Measurement Noise**: Represents sensor inaccuracies in the reported asteroid positions.
 
-5. **Iterate**  
+6. **Iterate**  
    At each timestep:
    1. Predict asteroid states using the motion model.
    2. Incorporate the new (possibly noisy) measurements to correct these predictions.
