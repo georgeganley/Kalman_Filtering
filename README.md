@@ -77,7 +77,8 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
 1. **State Representation**  
    A typical state vector for an asteroid might include:
    
-   $$x = \begin{bmatrix} x \\ y \\ v_x \\ v_y \\ a_x \\ a_y \end{bmatrix},$$
+![image](https://github.com/user-attachments/assets/67454485-c82e-451b-a8f7-342ca5e5c7bc)
+
    
    where $(x, y)$ is position, $(v_x, v_y)$ is velocity, and $(a_x, a_y)$ is acceleration.
 
@@ -99,9 +100,9 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
    - **Compute the innovation** (difference) between the measured position and the predicted position from the state vector.
    - **Update** the state vector and covariance using the Kalman Gain \(K\):
      
-   $$mathbf{x}_{k+1} /leftarrow mathbf{x} + K, $$
+      $$x_{k+1} \leftarrow x_{k+1} + K \left(z_{k+1} - Hx_{k+1}\right),$$
 
-     where $(\mathbf{z}_{k+1})$ is the actual measurement (observed $(x, y)$), and $(\mathbf{H})$ is the observation matrix mapping the state to the measured quantities.
+     where $(\mathbf{z}_{k+1})$ is the actual measurement $(x, y)$, and $(\mathbf{H})$ is the observation matrix mapping the state to the measured quantities.
 
 5. **Noise Handling**
    - **Process Noise**: Represents modeling errors or unmodeled forces in the asteroid’s motion.
