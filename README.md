@@ -99,7 +99,7 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
    - **Compute the innovation** (difference) between the measured position and the predicted position from the state vector.
    - **Update** the state vector and covariance using the Kalman Gain \(K\):
      
-     $$\mathbf{x}_{k+1} \leftarrow \mathbf{x}_{k+1} + K(\mathbf{z}_{k+1} - \mathbf{H}\,\mathbf{x}_{k+1}),$$
+     $$\mathbf{x}_{k+1} = \mathbf{x}_{k+1} + K(\mathbf{z}_{k+1} - \mathbf{H}\,\mathbf{x}_{k+1}),$$
 
      where $(\mathbf{z}_{k+1})$ is the actual measurement (observed $(x, y)$), and $(\mathbf{H})$ is the observation matrix mapping the state to the measured quantities.
 
@@ -112,3 +112,11 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
    1. Predict asteroid states using the motion model.
    2. Incorporate the new (possibly noisy) measurements to correct these predictions.
    3. Output the best estimate of each asteroid’s position for the next timestep.
+
+## Localization Results
+
+The clip below demonstrates how a successful implementation of the Kalman filter yields the predicted location of each asteroid and the spaceship as a function of their previous location, velocity, and acceleration. Given the predicted locations of each comet, the spaceship is able to 'jump' between asteroids and ultimately reach its goal.
+
+![Kalman Filter spaceship localization](https://github.com/user-attachments/assets/37f04dd7-0f30-4f64-8e4e-d630214cfc8c)
+
+
