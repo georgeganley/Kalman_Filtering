@@ -77,7 +77,7 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
 1. **State Representation**  
    A typical state vector for an asteroid might include:
    
-   $$\mathbf{x} = \begin{bmatrix} x \\ y \\ v_x \\ v_y \\ a_x \\ a_y \end{bmatrix},$$
+   $$x = \begin{bmatrix} x \\ y \\ v_x \\ v_y \\ a_x \\ a_y \end{bmatrix},$$
    
    where $(x, y)$ is position, $(v_x, v_y)$ is velocity, and $(a_x, a_y)$ is acceleration.
 
