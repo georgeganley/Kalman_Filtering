@@ -99,7 +99,7 @@ Because many of the asteroid position measurements are **noisy**, a **Kalman fil
    - **Compute the innovation** (difference) between the measured position and the predicted position from the state vector.
    - **Update** the state vector and covariance using the Kalman Gain \(K\):
      
-   $$\mathbf{x}_{k+1}  \leftarrow $$
+   $$mathbf{x}_{k+1} /leftarrow x_{k+1} + K \left( \mathbf{z}_{k+1} - \mathbf{H}\,\mathbf{x}_{k+1} \right), $$
 
      where $(\mathbf{z}_{k+1})$ is the actual measurement (observed $(x, y)$), and $(\mathbf{H})$ is the observation matrix mapping the state to the measured quantities.
 
